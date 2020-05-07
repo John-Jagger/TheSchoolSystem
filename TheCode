@@ -1,0 +1,187 @@
+import java.io.*; 
+import java.util.*; 
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+/**
+ * Write a description of class Students here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+class Students
+{
+    public static void main(String args[]) throws InterruptedException
+    {
+        Scanner on = new Scanner(System.in);
+
+        ArrayList<String> students1 = new ArrayList<String>();
+        students1.add("John, Jagger, 1");
+        students1.add("Noah, Borshit, 10");
+        students1.add("Vince, Albon, 9");
+        students1.add("Abby, Landy, 6");
+        students1.add("Elon, Rusk, 4");
+        students1.add("Mario, Mario, 10");
+        students1.add("Cayde, Ace, 6");
+        students1.add("Wesley, Smith, 9");
+        students1.add("Jack, Brown, 3");
+        students1.add("William, Wilson, 9");
+
+        Collections.sort(students1);
+
+        System.out.println("");
+
+        menu();
+
+        String beginng = on.nextLine();
+
+        clearScreen();
+
+        loadingScreen();
+
+        clearScreen();
+
+        cockNBalls();
+
+        String classes = on.nextLine();
+        if(classes.equals("CSA"))
+        {
+            clearScreen();
+
+            for (int i = 0; i<100; i++)
+            {
+                Scanner in = new Scanner(System.in);
+                cockNBalls2();
+                String response = in.nextLine();
+                if(response.equals("add"))
+                {
+                    clearScreen();
+                    System.out.println("Great, now please tell us his/her first name");
+                    String newKiddo0 = in.nextLine();
+                    clearScreen();
+                    System.out.println("Great, now please tell us his/her last name");
+                    String newKiddo1 = in.nextLine(); 
+                    clearScreen();
+                    System.out.println("Great, now please tell us his/her special number");
+                    String newKiddo2 = in.nextLine();
+                    clearScreen();
+                    students1.add(newKiddo0 + ", " + newKiddo1 + ", " +newKiddo2);
+                    System.out.println("Here's your new list!!");
+                    System.out.println(students1);
+                    delayDots(5);
+                    clearScreen();
+                }
+                else if(response.equals("remove"))
+                {
+                    clearScreen();
+                    System.out.println(students1);
+                    System.out.println("");
+                    System.out.println("Oh how sad, now please tell us what there first name was");
+                    String oldKiddo0 = in.nextLine();
+                    clearScreen();
+                    System.out.println("Oh how sad, now please tell us what there last name was");
+                    String oldKiddo1 = in.nextLine(); 
+                    clearScreen();
+                    System.out.println("Oh how sad, now please tell us what there number was");
+                    String oldKiddo2 = in.nextLine();
+                    clearScreen();
+                    System.out.println(oldKiddo0 + ", " + oldKiddo1 + " will be taken CARE of, here's an updated list!!");
+                    students1.remove(oldKiddo0 + ", " + oldKiddo1 + ", " +oldKiddo2);
+                    System.out.println(students1);
+                    delayDots(5);
+                    clearScreen();
+                }
+                else if(response.equals("list"))
+                {
+                    clearScreen();
+                    System.out.println("Here's a list of your kids!! (enter anything when you want to go back)");
+                    System.out.println(students1);
+                    String cock = in.nextLine();
+                    clearScreen();
+                }
+                else if (response.equals("end"))
+                {
+                    System.out.println("Thanks for using the PCHS student tracker!! Stay Safe");
+                    delayDots(5);
+                    break;
+                }
+                else
+                {
+                    System.out.println("<error.comand-" + response + "-not.found>");
+                    delayDots(5);
+                    clearScreen();
+                }
+            }
+        }
+        else
+        {
+            System.out.println("<error.comand-" + classes + "-not.found>");
+            delayDots(5);
+            clearScreen();
+        }
+
+    }
+
+    public static void clearScreen()
+    {
+        System.out.print('\u000C');
+    }
+
+    public static void menu()
+    {
+        System.out.println("||                                      ||");
+        System.out.println("||               Welcome to             ||");
+        System.out.println("||      Pueblo County Student System    ||");
+        System.out.println("||                  🐝                  ||");
+        System.out.println("||                                      ||");
+        System.out.println("||  Please enter anything to continue   ||");
+    }
+
+    public static void loadingScreen() throws InterruptedException
+    {
+        delayDots(3);
+        System.out.println("Loading Mr.Grossen Class");
+        delayDots(3);
+    }
+
+    public static void cockNBalls()
+    {
+        System.out.println("||                                      ||");
+        System.out.println("||             Welcome back             ||");
+        System.out.println("||              Mr.Gossen               ||");
+        System.out.println("||                  🐝                  ||");
+        System.out.println("||                                      ||");
+        System.out.println("||  Please select the class you want    ||");
+        System.out.println("||              to modify               ||");
+        System.out.println("||                                      ||");
+        System.out.println("||              Class (CSA)             ||");
+    }
+
+    public static void cockNBalls2()
+    {
+        System.out.println("||                                      ||");
+        System.out.println("||           CSA:Mr.Grossen             ||");
+        System.out.println("||        Here's what you can do        ||");
+        System.out.println("||                  🐝                  ||");
+        System.out.println("||                                      ||");
+        System.out.println("||           Veiw List(list)            ||");
+        System.out.println("||          Add Student (add)           ||");
+        System.out.println("||        Remove Student(remove)        ||");
+        System.out.println("||             Leave(end)               ||");
+    }
+
+    public static void delayDots(int dotAmount) throws InterruptedException
+    {
+        for(int i=0; i<dotAmount; i++)
+        {
+            TimeUnit.SECONDS.sleep(1);
+            System.out.print(". ");
+        }
+        System.out.println();
+    }
+
+    public static void delayDots() throws InterruptedException
+    {
+        delayDots(0);
+    }
+}
+
